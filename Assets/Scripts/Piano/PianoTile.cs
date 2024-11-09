@@ -1,14 +1,17 @@
 using UnityEngine;
 using System;
+using Oculus.Haptics;
 
 [RequireComponent(typeof(AudioSource))]
 public class PianoTile : MonoBehaviour
 {
     public string keyName;
     public AudioClip keySound;
+    public HapticClip keyHaptic;
     public PianoSequence sequence; // Reference to the Sequence script
 
     private AudioSource audioSource;
+    private HapticClipPlayer hapticSource;
 
     private void Start()
     {
@@ -58,6 +61,17 @@ public class PianoTile : MonoBehaviour
         else
         {
             Debug.LogWarning("No audio clip assigned to the tile: " + keyName);
+        }
+
+        if (keyHaptic != null){
+            Debug.Log("Haptics Playing!");
+            hapticSource = new HapticClipPlayer(keyHaptic);
+            hapticSource.Play(Controller.Left);
+            hapticSource.Play(Controller.Right);
+        }
+        else
+        {
+            Debug.LogWarning("No haptic clip assigned to the tile: " + keyName);
         }
 
         // Notify the sequence to record the note press
