@@ -228,6 +228,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1460509005}
     m_Modifications:
+    - target: {fileID: 1922260056404076959, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 256d8f52f2c6f7d4fa6ac797ab9c5e18, type: 3}
     - target: {fileID: 5741469480734917398, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: m_Name
       value: White Tile (1)
@@ -272,6 +276,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: keyName
+      value: D
+      objectReference: {fileID: 0}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: keySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 256d8f52f2c6f7d4fa6ac797ab9c5e18, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -290,6 +302,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1460509005}
     m_Modifications:
+    - target: {fileID: 1922260056404076959, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 93458617fdc169c4480c5efc9127f75a, type: 3}
     - target: {fileID: 5741469480734917398, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: m_Name
       value: White Tile (4)
@@ -334,6 +350,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: keyName
+      value: G
+      objectReference: {fileID: 0}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: keySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 93458617fdc169c4480c5efc9127f75a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -770,6 +794,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1460509005}
     m_Modifications:
+    - target: {fileID: 1922260056404076959, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 98a40d53a733a334f972c524e4458902, type: 3}
     - target: {fileID: 5741469480734917398, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: m_Name
       value: White Tile (3)
@@ -814,6 +842,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: keyName
+      value: F
+      objectReference: {fileID: 0}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: keySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 98a40d53a733a334f972c524e4458902, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2082,6 +2118,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1460509005}
     m_Modifications:
+    - target: {fileID: 1922260056404076959, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 08f28466f0cd7eb47a4ef7f3137aa706, type: 3}
     - target: {fileID: 5741469480734917398, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: m_Name
       value: White Tile (2)
@@ -2126,6 +2166,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: keyName
+      value: E
+      objectReference: {fileID: 0}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: keySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 08f28466f0cd7eb47a4ef7f3137aa706, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2349,6 +2397,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1460509005}
     m_Modifications:
+    - target: {fileID: 1922260056404076959, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d92caba06ef6e894cbeff2ff4fc2c60c, type: 3}
     - target: {fileID: 5741469480734917398, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: m_Name
       value: White Tile (5)
@@ -2393,6 +2445,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: keyName
+      value: A
+      objectReference: {fileID: 0}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: keySound
+      value: 
+      objectReference: {fileID: 8300000, guid: d92caba06ef6e894cbeff2ff4fc2c60c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2443,8 +2503,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1460509005}
+  - component: {fileID: 1460509006}
+  - component: {fileID: 1460509007}
   m_Layer: 4
-  m_Name: Interactables
+  m_Name: Piano
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2472,6 +2534,114 @@ Transform:
   - {fileID: 1819293140}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 60.014, y: -99.275, z: -8.051}
+--- !u!82 &1460509006
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460509004}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1460509007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460509004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 763aad7aea7169b4d921a1121aa6a158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1545302781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2977,6 +3147,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1460509005}
     m_Modifications:
+    - target: {fileID: 1922260056404076959, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a17e55bb9479e44ea56f43dc1af4c92, type: 3}
     - target: {fileID: 5741469480734917398, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: m_Name
       value: White Tile (6)
@@ -3021,6 +3195,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: keyName
+      value: BS
+      objectReference: {fileID: 0}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: keySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a17e55bb9479e44ea56f43dc1af4c92, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3425,6 +3607,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1460509005}
     m_Modifications:
+    - target: {fileID: 1922260056404076959, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e77e03a561d8b94b9e36a954ac93312, type: 3}
     - target: {fileID: 5741469480734917398, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: m_Name
       value: White Tile
@@ -3469,6 +3655,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: keySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e77e03a561d8b94b9e36a954ac93312, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
