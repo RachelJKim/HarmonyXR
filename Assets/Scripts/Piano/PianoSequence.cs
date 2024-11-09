@@ -2,32 +2,14 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-[System.Serializable]
-public class NoteEvent
-{
-    public string keyName;
-    public float pressTime;
-    public float releaseTime;
-
-    public NoteEvent(string keyName, float pressTime)
-    {
-        this.keyName = keyName;
-        this.pressTime = pressTime;
-        this.releaseTime = -1f;
-    }
-
-    public void SetReleaseTime(float time)
-    {
-        releaseTime = time;
-    }
-}
-
 public class PianoSequence : MonoBehaviour
 {
     public List<NoteEvent> notes = new List<NoteEvent>();
     private bool isRecording = false;
     private float startTime;
     private Coroutine playbackCoroutine;
+
+    public GameObject noteBubblePrefab;
 
     // Start recording by clearing notes and capturing start time
     public void StartRecording()
@@ -46,12 +28,12 @@ public class PianoSequence : MonoBehaviour
     }
 
     // Add a new note event for press
-    public void RecordNotePress(string keyName)
+    public void RecordNotePress(string keyName, Color color)
     {
         if (isRecording)
         {
             float pressTime = Time.time - startTime;
-            NoteEvent noteEvent = new NoteEvent(keyName, pressTime);
+            NoteEvent noteEvent = new NoteEvent(keyName, pressTime, color, new Vector3(0, 0, 0), this.noteBubblePrefab);
             notes.Add(noteEvent);
             Debug.Log($"Note {keyName} pressed at {pressTime} seconds.");
         }

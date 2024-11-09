@@ -1,4 +1,6 @@
+using Oculus.Interaction;
 using UnityEngine;
+using static Oculus.Interaction.InteractableColorVisual;
 
 [RequireComponent(typeof(AudioSource))]
 public class PianoTile : MonoBehaviour
@@ -6,6 +8,8 @@ public class PianoTile : MonoBehaviour
     public string keyName;
     public AudioClip keySound;
     public PianoSequence sequence; // Reference to the Sequence script
+    public Color color = Color.white;
+    public InteractableColorVisual colorVisual;
 
     private AudioSource audioSource;
 
@@ -18,6 +22,10 @@ public class PianoTile : MonoBehaviour
         {
             Debug.LogError("PianoSequence component not found in parent hierarchy. Ensure it's attached to a parent object.");
         }
+        ColorState colorState = new ColorState() { Color = color };
+        colorVisual.InjectOptionalNormalColorState(colorState);
+        colorVisual.InjectOptionalHoverColorState(colorState);
+        colorVisual.InjectOptionalSelectColorState(colorState);
     }
 
     private void OnValidate()
@@ -54,7 +62,7 @@ public class PianoTile : MonoBehaviour
         }
 
         // Notify the sequence to record the note press
-        sequence?.RecordNotePress(keyName);
+        sequence?.RecordNotePress(keyName, color);
     }
 
     public void ReleaseTile()
