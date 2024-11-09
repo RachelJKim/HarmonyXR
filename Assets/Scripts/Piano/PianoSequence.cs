@@ -10,6 +10,9 @@ public class PianoSequence : MonoBehaviour
     private Coroutine playbackCoroutine;
 
     public GameObject noteBubblePrefab;
+    public float spacingMultiplier = 0.5f;   // Controls spacing based on time
+    public float lineY = 0f;                 // Y position for the horizontal line
+    public float lineZ = 0f;                 // Z position for the horizontal line
 
     // Start recording by clearing notes and capturing start time
     public void StartRecording()
@@ -33,7 +36,7 @@ public class PianoSequence : MonoBehaviour
         if (isRecording)
         {
             float pressTime = Time.time - startTime;
-            NoteEvent noteEvent = new NoteEvent(keyName, pressTime, color, new Vector3(0, 0, 0), this.noteBubblePrefab);
+            NoteEvent noteEvent = new NoteEvent(keyName, pressTime, color, spacingMultiplier, noteBubblePrefab, this.transform, lineY, lineZ);
             notes.Add(noteEvent);
             Debug.Log($"Note {keyName} pressed at {pressTime} seconds.");
         }
