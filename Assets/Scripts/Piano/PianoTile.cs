@@ -54,6 +54,7 @@ public class PianoTile : MonoBehaviour
         {
             audioSource.volume = IntensityToVolume(intensity);
             audioSource.Play();
+            TriggerHapticFeedback(intensity);
         }
         else
         {
@@ -67,8 +68,25 @@ public class PianoTile : MonoBehaviour
     public void ReleaseTile()
     {
         Debug.Log("Tile Released!");
+        StopHapticFeedback();
 
         // Notify the sequence to record the note release
         sequence?.RecordNoteRelease(keyName);
+    }
+
+    private void TriggerHapticFeedback(int intensity)
+    {
+        // Use OVRInput to provide haptic feedback
+        float vibrationIntensity = Mathf.Clamp(intensity / 10f, 0f, 1f); // Ensure intensity is between 0 and 1
+
+        // You can adjust the controller to which you want to apply feedback (LTouch, RTouch)
+        OVRInput.SetControllerVibration(vibrationIntensity, vibrationIntensity, OVRInput.Controller.RTouch); // Right controller
+        OVRInput.SetControllerVibration(vibrationIntensity, vibrationIntensity, OVRInput.Controller.LTouch); // Left controller
+    }
+
+    private void StopHapticFeedback()
+    {
+        OVRInput.SetControllerVibration(0f, 0f, OVRInput.Controller.RTouch); // Stop vibration on right controller
+        OVRInput.SetControllerVibration(0f, 0f, OVRInput.Controller.LTouch); // Stop vibration on left controller
     }
 }
