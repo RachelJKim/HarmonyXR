@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(AudioSource))]
 public class PianoTile : MonoBehaviour
@@ -39,13 +40,19 @@ public class PianoTile : MonoBehaviour
         }
     }
 
-    public void PressTile()
+    private float IntensityToVolume(int intensity) {
+        return Mathf.Clamp(intensity / 10f, 0f, 1f);
+        // (float)(2.0 / (1.0 + Math.Exp(-2 * intensity)) - 1.0); // tanh
+    }
+
+    public void PressTile(int intensity=5)
     {
         Debug.Log("Tile Pressed!");
         Debug.Log("Key: " + keyName);
 
         if (keySound != null && audioSource != null)
         {
+            audioSource.volume = IntensityToVolume(intensity);
             audioSource.Play();
         }
         else

@@ -8,12 +8,14 @@ public class NoteEvent
     public string keyName;
     public float pressTime;
     public float releaseTime;
+    public int intensity;
 
     public NoteEvent(string keyName, float pressTime)
     {
         this.keyName = keyName;
         this.pressTime = pressTime;
         this.releaseTime = -1f;
+        this.intensity = 10;
     }
 
     public void SetReleaseTime(float time)
@@ -88,7 +90,7 @@ public class PianoSequence : MonoBehaviour
             PianoTile tile = FindTileByName(note.keyName);
             if (tile != null)
             {
-                tile.PressTile();
+                tile.PressTile(note.intensity);
                 yield return new WaitForSeconds(note.releaseTime - note.pressTime);
                 tile.ReleaseTile();
             }
