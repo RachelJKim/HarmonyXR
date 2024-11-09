@@ -10,11 +10,10 @@ public class PianoSequence : MonoBehaviour
     private Coroutine playbackCoroutine;
 
     public GameObject noteBubblePrefab;
-    public float spacingMultiplier = 0.5f;   // Controls spacing based on time
-    public float lineY = 0f;                 // Y position for the horizontal line
-    public float lineZ = 0f;                 // Z position for the horizontal line
+    public float spacingMultiplier = 0.5f;
+    public float lineY = 0f;
+    public float lineZ = 0f;
 
-    // Start recording by clearing notes and capturing start time
     public void StartRecording()
     {
         isRecording = true;
@@ -23,39 +22,29 @@ public class PianoSequence : MonoBehaviour
         Debug.Log("Recording started.");
     }
 
-    // Stop recording
     public void StopRecording()
     {
         isRecording = false;
         Debug.Log("Recording stopped. Total notes recorded: " + notes.Count);
     }
 
-    // Add a new note event for press
     public void RecordNotePress(string keyName, Color color)
     {
         if (isRecording)
         {
             float pressTime = Time.time - startTime;
 
-            // Spawn Note Bubbles under the VisualMusic object
-            VisualMusic parentScript = GameObject.FindObjectOfType<VisualMusic>();
-            if (parentScript == null)
-            {
-                Debug.LogError("No GameObject with VisualMusic script found.");
-                return;
-            }
-
-            GameObject parent = parentScript.gameObject;
             // Create a new NoteEvent with the calculated position and reference to NoteBubble prefab
-            NoteEvent noteEvent = new NoteEvent(keyName, pressTime, color, spacingMultiplier, noteBubblePrefab, parent.transform, lineY, lineZ);
+            NoteEvent noteEvent = new NoteEvent(keyName, pressTime, color, spacingMultiplier, noteBubblePrefab, this.transform, lineY, lineZ);
             notes.Add(noteEvent);
+
+            // Start particle effect
+            noteEvent.StartParticleEffect();
 
             Debug.Log($"Note {keyName} pressed at {pressTime} seconds.");
         }
     }
 
-
-    // Update release time for a note
     public void RecordNoteRelease(string keyName)
     {
         if (isRecording)
@@ -65,35 +54,46 @@ public class PianoSequence : MonoBehaviour
             {
                 float releaseTime = Time.time - startTime;
                 noteEvent.SetReleaseTime(releaseTime);
+
+                // Stop particle effect
+                noteEvent.StopParticleEffect();
+
                 Debug.Log($"Note {keyName} released at {releaseTime} seconds.");
             }
         }
     }
 
-    // Start playback coroutine
     public void StartPlayback()
     {
         if (playbackCoroutine != null) StopCoroutine(playbackCoroutine);
         playbackCoroutine = StartCoroutine(PlaybackCoroutine());
     }
 
-    // Playback coroutine to play notes based on timing
     private IEnumerator PlaybackCoroutine()
     {
+        float playbackStartTime = Time.time;
+
         foreach (var note in notes)
         {
-            yield return new WaitForSeconds(note.pressTime - (Time.time - startTime));
+            // Wait until the correct time to play this note
+            yield return new WaitForSeconds(note.pressTime - (Time.time - playbackStartTime));
+
             PianoTile tile = FindTileByName(note.keyName);
             if (tile != null)
             {
+                // Simulate the press action and start particle effect
                 tile.PressTile();
-                yield return new WaitForSeconds(note.releaseTime - note.pressTime);
+                note.StartParticleEffect();
+
+                yield return new WaitForSeconds(note.releaseTime - note.pressTime); // Wait for the duration
+
+                // Simulate the release action and stop particle effect
                 tile.ReleaseTile();
+                note.StopParticleEffect();
             }
         }
     }
 
-    // Find PianoTile by key name
     private PianoTile FindTileByName(string keyName)
     {
         foreach (var tile in GetComponentsInChildren<PianoTile>())

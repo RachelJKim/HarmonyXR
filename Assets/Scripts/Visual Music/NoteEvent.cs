@@ -23,7 +23,6 @@ public class NoteEvent
 
         // Instantiate the noteBubble prefab under the specified parent
         GameObject noteBubbleObject = GameObject.Instantiate(noteBubblePrefab, position, Quaternion.identity, parent);
-        //noteBubbleObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f); // Initial size
         noteBubbleObject.GetComponent<NoteBubble>().Initialize(this, 0.1f);
 
         // Set color and initialize the NoteBubble script
@@ -32,6 +31,8 @@ public class NoteEvent
 
         noteBubble = noteBubbleObject.AddComponent<NoteBubble>(); // Add NoteBubble script
         noteBubble.Initialize(this, 0.1f); // Link NoteEvent to NoteBubble and set initial size
+
+        noteBubble.setParticleEffectColor(color); // set the particle effect color the same as the note
     }
 
     public void SetReleaseTime(float time)
@@ -45,5 +46,16 @@ public class NoteEvent
     {
         intensity = newIntensity;
         Debug.Log($"Updated intensity of {keyName} to {intensity}");
+    }
+
+    public void StartParticleEffect()
+    {
+        noteBubble?.EnableParticleEffect();
+    }
+
+    // Stop the particle effect when the note is released
+    public void StopParticleEffect()
+    {
+        noteBubble?.DisableParticleEffect();
     }
 }
