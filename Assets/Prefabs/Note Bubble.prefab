@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2651923710997438965}
   - component: {fileID: 4005556676573394629}
   - component: {fileID: 8856345198395647529}
+  - component: {fileID: 858046151638636054}
   m_Layer: 0
   m_Name: Note Bubble
   m_TagString: Untagged
@@ -105,3 +106,15 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &858046151638636054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6333398449415454683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0da34fcd789d5448928c1c02f9caead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

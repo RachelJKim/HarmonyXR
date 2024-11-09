@@ -36,11 +36,24 @@ public class PianoSequence : MonoBehaviour
         if (isRecording)
         {
             float pressTime = Time.time - startTime;
-            NoteEvent noteEvent = new NoteEvent(keyName, pressTime, color, spacingMultiplier, noteBubblePrefab, this.transform, lineY, lineZ);
+
+            // Spawn Note Bubbles under the VisualMusic object
+            VisualMusic parentScript = GameObject.FindObjectOfType<VisualMusic>();
+            if (parentScript == null)
+            {
+                Debug.LogError("No GameObject with VisualMusic script found.");
+                return;
+            }
+
+            GameObject parent = parentScript.gameObject;
+            // Create a new NoteEvent with the calculated position and reference to NoteBubble prefab
+            NoteEvent noteEvent = new NoteEvent(keyName, pressTime, color, spacingMultiplier, noteBubblePrefab, parent.transform, lineY, lineZ);
             notes.Add(noteEvent);
+
             Debug.Log($"Note {keyName} pressed at {pressTime} seconds.");
         }
     }
+
 
     // Update release time for a note
     public void RecordNoteRelease(string keyName)
