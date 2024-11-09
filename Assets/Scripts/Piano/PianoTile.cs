@@ -8,7 +8,7 @@ public class PianoTile : MonoBehaviour
     public string keyName;
     public AudioClip keySound;
     public PianoSequence sequence; // Reference to the Sequence script
-    public Color color = Color.white;
+    public Color color = Color.black;
     public InteractableColorVisual colorVisual;
 
     private AudioSource audioSource;
@@ -54,6 +54,7 @@ public class PianoTile : MonoBehaviour
 
         if (keySound != null && audioSource != null)
         {
+
             audioSource.Play();
         }
         else

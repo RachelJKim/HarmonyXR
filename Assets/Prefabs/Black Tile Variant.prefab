@@ -812,6 +812,8 @@ MonoBehaviour:
   keyName: C
   keySound: {fileID: 8300000, guid: 7e77e03a561d8b94b9e36a954ac93312, type: 3}
   sequence: {fileID: 0}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  colorVisual: {fileID: 7325610582103667971}
 --- !u!82 &1409912022143668748
 AudioSource:
   m_ObjectHideFlags: 0
