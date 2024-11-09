@@ -1,35 +1,38 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
 public class PianoTile : MonoBehaviour
 {
-    public string keyName;  // The name of the key
-    public AudioClip keySound;  // The audio clip for this tile
+    public string keyName;
+    public AudioClip keySound;
+    public PianoSequence sequence; // Reference to the Sequence script
 
     private AudioSource audioSource;
 
     private void Start()
     {
         InitializeAudioSource();
+        sequence = GetComponentInParent<PianoSequence>();
+
+        if (sequence == null)
+        {
+            Debug.LogError("PianoSequence component not found in parent hierarchy. Ensure it's attached to a parent object.");
+        }
     }
 
-    // Called in the editor when any variable is modified in the Inspector
     private void OnValidate()
     {
         InitializeAudioSource();
     }
 
-    // Ensures that audioSource is assigned
     private void InitializeAudioSource()
     {
         if (audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();
-            audioSource.playOnAwake = false;  // Ensure it doesn't play on start
+            audioSource.playOnAwake = false;
         }
 
-        // Set the audio clip to the assigned key sound if it's not already set
         if (audioSource.clip != keySound)
         {
             audioSource.clip = keySound;
@@ -41,7 +44,6 @@ public class PianoTile : MonoBehaviour
         Debug.Log("Tile Pressed!");
         Debug.Log("Key: " + keyName);
 
-        // Play the audio clip if it¡¯s assigned
         if (keySound != null && audioSource != null)
         {
             audioSource.Play();
@@ -50,5 +52,16 @@ public class PianoTile : MonoBehaviour
         {
             Debug.LogWarning("No audio clip assigned to the tile: " + keyName);
         }
+
+        // Notify the sequence to record the note press
+        sequence?.RecordNotePress(keyName);
+    }
+
+    public void ReleaseTile()
+    {
+        Debug.Log("Tile Released!");
+
+        // Notify the sequence to record the note release
+        sequence?.RecordNoteRelease(keyName);
     }
 }

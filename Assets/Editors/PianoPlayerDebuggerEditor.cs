@@ -5,17 +5,22 @@ using System.Collections.Generic;
 [CustomEditor(typeof(PianoPlayerDebugger))]
 public class PianoReplayerDebuggerEditor : Editor
 {
-    // List to store references to PianoTile components
     private List<PianoTile> pianoTiles = new List<PianoTile>();
+    private PianoSequence sequence;
+
+    private void OnEnable()
+    {
+        PianoPlayerDebugger replayer = (PianoPlayerDebugger)target;
+        sequence = replayer.GetComponent<PianoSequence>();
+    }
 
     public override void OnInspectorGUI()
     {
-        // Draw the default inspector layout for other fields in the PianoPlayer
         DrawDefaultInspector();
 
         PianoPlayerDebugger replayer = (PianoPlayerDebugger)target;
 
-        // Button to find all PianoTile components in the children of PianoPlayer
+        // Button to find all PianoTile components in children
         if (GUILayout.Button("Find Piano Tiles"))
         {
             pianoTiles.Clear();
@@ -23,28 +28,23 @@ public class PianoReplayerDebuggerEditor : Editor
             Debug.Log("Piano Tiles Found: " + pianoTiles.Count);
         }
 
-        // Display a button for each tile in the list
+        // Display buttons for each tile
         foreach (var tile in pianoTiles)
         {
             if (tile != null)
             {
-                if (GUILayout.Button("Play " + tile.keyName))
-                {
-                    tile.PressTile(); // Play sound and print debug log for this tile
-                }
+                EditorGUILayout.BeginHorizontal();
+                if (GUILayout.Button("Press " + tile.keyName)) tile.PressTile();
+                if (GUILayout.Button("Release " + tile.keyName)) tile.ReleaseTile();
+                EditorGUILayout.EndHorizontal();
             }
         }
 
-        // Button to play all tiles in the list
-        if (GUILayout.Button("Play All Tiles"))
-        {
-            foreach (var tile in pianoTiles)
-            {
-                if (tile != null)
-                {
-                    tile.PressTile(); // Play sound and print debug log for each tile
-                }
-            }
-        }
+        // Recording buttons
+        if (GUILayout.Button("Start Recording")) sequence.StartRecording();
+        if (GUILayout.Button("Stop Recording")) sequence.StopRecording();
+
+        // Playback button
+        if (GUILayout.Button("Start Playback")) sequence.StartPlayback();
     }
 }
