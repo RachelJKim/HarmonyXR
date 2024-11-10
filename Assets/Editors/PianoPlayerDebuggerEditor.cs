@@ -43,7 +43,7 @@ public class PianoReplayerDebuggerEditor : Editor
         // Recording buttons
         if (GUILayout.Button("Start Recording")) sequence.StartRecording();
         if (GUILayout.Button("Stop Recording")) sequence.StopRecording();
-
+        if (GUILayout.Button("Copy Recording")) sequence.CopySequenceToWorld(0.4f);
         // Playback button
         if (GUILayout.Button("Start Playback")) sequence.StartPlayback(sequence);
     }
