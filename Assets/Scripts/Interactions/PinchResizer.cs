@@ -1,39 +1,40 @@
 using Oculus.Interaction;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PinchBubble : MonoBehaviour
+public class PinchResizer : MonoBehaviour
 {
     public OVRHand leftHand;
     public OVRHand rightHand;
-    public GameObject leftTip;
-    public GameObject rightTip;
+    public Transform leftTip;
+    public Transform rightTip;
     public float scaleSpeed = 0.1f;
-    public GameObject noteBubble;
 
     private Vector3 initialScale;
-    private bool isPinching = false;
+    private bool isResizing = false;
     private GameObject pinchedObject;
+    private float initialDistance;
 
     private GameObject GetPinchedObject()
     {
+        // Check for overlapping colliders around the left fingertip within a radius
         Collider[] colliders = Physics.OverlapSphere(leftTip.transform.position, 0.02f);
-        //Debug.Log("HERE" + colliders.Length);
         GameObject leftCollider = null;
+
         foreach (var collider in colliders)
         {
-            if (collider.gameObject.CompareTag("Bubble"))
+            if (collider.gameObject.GetComponent<NoteBubble>())
             {
                 leftCollider = collider.gameObject;
-                Debug.LogError("Left Collider Found" + leftCollider.name);
+                Debug.Log("Left Collider Found: " + leftCollider.name);
                 break;
             }
         }
-        Debug.Log("HERE2 " + leftCollider.name);
 
+        if (leftCollider == null)
+            return null;
+
+        // Check if the same object is overlapping the right fingertip
         colliders = Physics.OverlapSphere(rightTip.transform.position, 0.02f);
-        Debug.LogError(colliders.Length);
         foreach (var collider in colliders)
         {
             if (collider.gameObject == leftCollider)
@@ -47,7 +48,7 @@ public class PinchBubble : MonoBehaviour
 
     void Start()
     {
-        initialScale = new Vector3(0.1f, 0.1f, 0.1f);
+        initialScale = new Vector3(0.1f, 0.1f, 0.1f); // Default initial scale
     }
 
     void Update()
@@ -57,39 +58,37 @@ public class PinchBubble : MonoBehaviour
 
         if (leftPinch && rightPinch)
         {
-            if (!isPinching)
+            if (!isResizing)
             {
                 pinchedObject = GetPinchedObject();
                 if (pinchedObject != null)
                 {
-                    isPinching = true;
-                    Debug.LogError("Pinching Started");
+                    isResizing = true;
                     initialScale = pinchedObject.transform.localScale;
+
+                    // Store the initial distance between the fingertips at the start of the pinch
+                    initialDistance = Vector3.Distance(leftTip.transform.position, rightTip.transform.position);
+                    Debug.Log("Pinching Started");
                 }
-                
             }
 
             if (pinchedObject != null)
             {
-                float distance = Vector3.Distance(leftTip.transform.position, rightTip.transform.position);
-                //float scaleFactor = distance * scaleSpeed;
-                //pinchedObject.transform.localScale = initialScale + new Vector3(scaleFactor, scaleFactor, scaleFactor);
-                Debug.Log("HERE" + pinchedObject.name);
-                pinchedObject.transform.localScale = new Vector3(distance/2, distance / 2, distance / 2);
+                // distance between the fingertips
+                float fingerDistance = Vector3.Distance(leftTip.transform.position, rightTip.transform.position);
+
+                // Resize the object based on the distance between the fingertips   
+                pinchedObject.transform.localScale = new Vector3(fingerDistance / 2, fingerDistance / 2, fingerDistance / 2); ;
             }
         }
         else
         {
-            if (isPinching)
+            if (isResizing)
             {
-                isPinching = false;
-                //initialScale = transform.localScale;
-                Debug.LogError("Pinching Ended");
+                isResizing = false;
+                Debug.Log("Pinching Ended");
                 pinchedObject = null;
             }
         }
-
-
     }
 }
-
