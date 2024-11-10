@@ -73,4 +73,5 @@ public class PianoTile : MonoBehaviour
         // Notify the sequence to record the note release
         sequence?.RecordNoteRelease(keyName);
     }
+
 }

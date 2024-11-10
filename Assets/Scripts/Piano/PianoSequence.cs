@@ -8,6 +8,7 @@ public class PianoSequence : MonoBehaviour
     private bool isRecording = false;
     private float startTime;
     private Coroutine playbackCoroutine;
+    private bool isPlaying = false;
 
     public GameObject noteBubblePrefab;
     public float spacingMultiplier = 0.5f;
@@ -34,8 +35,10 @@ public class PianoSequence : MonoBehaviour
         {
             float pressTime = Time.time - startTime;
 
+            GameObject musicVisual = GameObject.FindAnyObjectByType<VisualMusic>().gameObject;
+
             // Create a new NoteEvent with the calculated position and reference to NoteBubble prefab
-            NoteEvent noteEvent = new NoteEvent(keyName, pressTime, color, spacingMultiplier, noteBubblePrefab, this.transform, lineY, lineZ);
+            NoteEvent noteEvent = new NoteEvent(keyName, pressTime, color, spacingMultiplier, noteBubblePrefab, musicVisual.transform, lineY, lineZ);
             notes.Add(noteEvent);
 
             // Start particle effect
