@@ -1,4 +1,10 @@
 # MRPiano
- Hackathon
+Developed in Unity for Meta Quest 3. 
 
- Piano sounds from https://github.com/fuhton/piano-mp3/tree/master
+Packages: 
+- Meta XR
+Assets:
+- Piano notes from https://github.com/fuhton/piano-mp3/tree/master
+AI Tools:
+- Copilot
+- ChatGPT
