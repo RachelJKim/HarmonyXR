@@ -9,9 +9,11 @@ public class PianoSequence : MonoBehaviour
     private float startTime;
     private Coroutine playbackCoroutine;
     private bool isPlaying = false;
+    public Transform referencePoint;
 
     public GameObject noteBubblePrefab;
-    public float spacingMultiplier = 0.5f;
+    public GameObject visualMusicPrefab;
+    public float spacingMultiplier = 1.0f;
     public float lineY = 0f;
     public float lineZ = 0f;
 
@@ -72,25 +74,47 @@ public class PianoSequence : MonoBehaviour
 
     public void CopySequenceToWorld(float scaleMultiplier)
     {
-        PianoSequence targetSequence = GameObject.Find("Visual Music").GetComponent<PianoSequence>();
+        // Calculate the target world position with an offset from the current PianoSequence position
+        //Vector3 targetWorldPosition = transform.position + worldPositionOffset;
 
-        // Clear target sequence
+        // Instantiate a new VisualMusic container at the reference position and rotation of the reference point   
+
+        GameObject newContainer = Instantiate(visualMusicPrefab, referencePoint.position, referencePoint.rotation);
+        PianoSequence targetSequence = newContainer.GetComponent<PianoSequence>();
+
+        // Clear the target sequence before copying
         targetSequence.notes.Clear();
 
         foreach (var note in notes)
         {
             // Create a new NoteEvent for the target sequence
-            NoteEvent copiedNote = new NoteEvent(note.keyName, note.pressTime, note.color, spacingMultiplier * scaleMultiplier,
-                noteBubblePrefab, targetSequence.transform, lineY * scaleMultiplier, lineZ * scaleMultiplier);
+            NoteEvent copiedNote = new NoteEvent(
+                note.keyName,
+                note.pressTime,
+                note.color,
+                spacingMultiplier,// * scaleMultiplier,
+                noteBubblePrefab,
+                newContainer.transform,
+                lineY,// * scaleMultiplier,
+                lineZ// * scaleMultiplier
+            );
 
-            // Adjust copied NoteBubble scale and position based on the scaleMultiplier and targetPositionOffset
-            copiedNote.noteBubble.transform.localScale = note.noteBubble.transform.localScale * scaleMultiplier;
-            copiedNote.noteBubble.transform.position = note.noteBubble.transform.position * scaleMultiplier;
+            // Adjust copied NoteBubble scale based on the scaleMultiplier
+            copiedNote.noteBubble.transform.localScale = note.noteBubble.transform.localScale;
 
-            // Add copied note to the target sequence
+            // Position each note relative to the new container’s local space
+            copiedNote.noteBubble.transform.localPosition = note.noteBubble.transform.localPosition;
+
+            // Add the copied note to the target sequence
             targetSequence.notes.Add(copiedNote);
+            //now destroy the note bubble
+            Destroy(note.noteBubble.gameObject);
         }
+        
+        newContainer.transform.localScale = new Vector3(scaleMultiplier, scaleMultiplier, scaleMultiplier);
     }
+
+
     public void StartPlayback(PianoSequence targetSequence)
     {
         if (playbackCoroutine != null) StopCoroutine(playbackCoroutine);

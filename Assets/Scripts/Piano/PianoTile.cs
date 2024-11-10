@@ -54,7 +54,7 @@ public class PianoTile : MonoBehaviour
 
         if (keySound != null && audioSource != null)
         {
-
+            Debug.Log("HERE4000");
             audioSource.Play();
         }
         else

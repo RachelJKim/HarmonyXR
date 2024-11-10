@@ -28,14 +28,14 @@ public class NoteEvent
         GameObject noteBubbleObject = GameObject.Instantiate(noteBubblePrefab, parent);
         noteBubbleObject.transform.localPosition = position;
 
-        noteBubbleObject.GetComponent<NoteBubble>().Initialize(this, 0.05f);
+        //noteBubbleObject.GetComponent<NoteBubble>().Initialize(this, 0.01f);
 
         // Set color and initialize the NoteBubble script
         Renderer renderer = noteBubbleObject.GetComponent<Renderer>();
         renderer.material.color = color;
 
-        noteBubble = noteBubbleObject.AddComponent<NoteBubble>(); // Add NoteBubble script
-        noteBubble.Initialize(this, 0.1f); // Link NoteEvent to NoteBubble and set initial size
+        noteBubble = noteBubbleObject.GetComponent<NoteBubble>(); // Add NoteBubble script
+        noteBubble.Initialize(this, 0.3f); // Link NoteEvent to NoteBubble and set initial size
 
         noteBubble.setParticleEffectColor(color); // set the particle effect color the same as the note
     }

@@ -11,6 +11,7 @@ public class NoteBubble : MonoBehaviour
     {
         this.noteEvent = noteEvent;
         this.initialSize = initialSize;
+        this.gameObject.transform.localScale = new Vector3(initialSize, initialSize, initialSize);
         particleSystem = GetComponentInChildren<ParticleSystem>();
     }
 
