@@ -134,7 +134,7 @@ public class PianoSequence : MonoBehaviour
             if (tile != null)
             {
                 // Simulate the press action and start particle effect
-                tile.PressTile();
+                tile.PressTile(0.5f); // TODO
                 note.StartParticleEffect();
 
                 yield return new WaitForSeconds(note.releaseTime - note.pressTime); // Wait for the duration

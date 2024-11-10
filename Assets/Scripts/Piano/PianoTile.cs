@@ -1,6 +1,8 @@
 using Oculus.Interaction;
 using UnityEngine;
 using static Oculus.Interaction.InteractableColorVisual;
+using Oculus.Haptics;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(AudioSource))]
 public class PianoTile : MonoBehaviour
@@ -12,6 +14,21 @@ public class PianoTile : MonoBehaviour
     public InteractableColorVisual colorVisual;
 
     private AudioSource audioSource;
+
+    private HapticClip templateHaptic;
+    private HapticClipPlayer player;
+    private Dictionary<char, float> noteToShift = new Dictionary<char, float>() {
+        {'C', -.3f},
+        {'D', -.2f},
+        {'E', -.1f},
+        {'F', 0f},
+        {'G', .1f},
+        {'A', .2f},
+        {'B', .3f}
+    };
+    private float IntensityToVolume(float intensity) {
+        return Mathf.Clamp(intensity, 0f, 1f);
+    }
 
     private void Start()
     {
@@ -47,15 +64,27 @@ public class PianoTile : MonoBehaviour
         }
     }
 
-    public void PressTile()
+    private void InitializePlayer()
+    {
+        player = new HapticClipPlayer(templateHaptic);
+        player.isLooping = true;
+        player.frequencyShift = noteToShift[keyName[0]];
+    }
+
+    public void PressTile(float intensity=0.5f)
     {
         Debug.Log("Tile Pressed!");
         Debug.Log("Key: " + keyName);
 
         if (keySound != null && audioSource != null)
         {
-            Debug.Log("HERE4000");
+            audioSource.volume = IntensityToVolume(intensity);
+
             audioSource.Play();
+
+            InitializePlayer();
+            player.amplitude = IntensityToVolume(intensity);
+            player.Play(Controller.Both);
         }
         else
         {
@@ -68,6 +97,7 @@ public class PianoTile : MonoBehaviour
 
     public void ReleaseTile()
     {
+        player.Stop();
         Debug.Log("Tile Released!");
 
         // Notify the sequence to record the note release
