@@ -65,11 +65,12 @@ public class PianoTile : MonoBehaviour
         }
     }
 
-    private void InitializePlayer()
+    private HapticClipPlayer InitializePlayer()
     {
         player = new HapticClipPlayer(templateHaptic);
         player.isLooping = true;
         player.frequencyShift = noteToShift[keyName[0]];
+        return player;
     }
 
     public void PressTile(float intensity=0.5f)
@@ -79,12 +80,14 @@ public class PianoTile : MonoBehaviour
 
         if (keySound != null && audioSource != null)
         {
-            audioSource.volume = IntensityToVolume(intensity);
+            //audioSource.volume = IntensityToVolume(intensity);
 
             audioSource.Play();
 
-            InitializePlayer();
-            player.amplitude = IntensityToVolume(intensity);
+            HapticClipPlayer player = InitializePlayer();
+            Debug.Log("WOW " + player.amplitude + " / " + player.clipDuration);
+            Debug.Log("player initialized");
+            //player.amplitude = IntensityToVolume(intensity);
             player.Play(Controller.Both);
         }
         else

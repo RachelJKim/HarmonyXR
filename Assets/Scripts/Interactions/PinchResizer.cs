@@ -76,9 +76,21 @@ public class PinchResizer : MonoBehaviour
             {
                 // distance between the fingertips
                 float fingerDistance = Vector3.Distance(leftTip.transform.position, rightTip.transform.position);
+                // Target lossy scale based on finger distance
+                float targetLossyScale = fingerDistance;
+                Vector3 targetWorldScale = new Vector3(targetLossyScale, targetLossyScale, targetLossyScale);
 
-                // Resize the object based on the distance between the fingertips   
-                pinchedObject.transform.localScale = new Vector3(fingerDistance / 2, fingerDistance / 2, fingerDistance / 2); ;
+                // Calculate the required local scale by dividing the target world scale by the parent's lossy scale
+                Vector3 parentLossyScale = pinchedObject.transform.parent != null ? pinchedObject.transform.parent.lossyScale : Vector3.one;
+                Vector3 requiredLocalScale = new Vector3(
+                    targetWorldScale.x / parentLossyScale.x,
+                    targetWorldScale.y / parentLossyScale.y,
+                    targetWorldScale.z / parentLossyScale.z
+                );
+
+                // Apply the calculated local scale
+                pinchedObject.transform.localScale = requiredLocalScale;
+
             }
         }
         else

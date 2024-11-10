@@ -45,6 +45,6 @@
 //        if (GUILayout.Button("Stop Recording")) sequence.StopRecording();
 
 //        // Playback button
-//        if (GUILayout.Button("Start Playback")) sequence.StartPlayback();
+//        if (GUILayout.Button("Start Playback")) sequence.StartPlayback(sequence);
 //    }
 //}

@@ -15,7 +15,7 @@ public class NoteEvent
         this.keyName = keyName;
         this.pressTime = pressTime;
         this.releaseTime = -1f;
-        this.intensity = 1f; // Default intensity is 1 (based on initial size)
+        this.intensity = 0.5f; // Default intensity is 1 (based on initial size)
         this.color = color;
 
         // Calculate position based on pressTime and spacingMultiplier
@@ -35,7 +35,7 @@ public class NoteEvent
         renderer.material.color = color;
 
         noteBubble = noteBubbleObject.GetComponent<NoteBubble>(); // Add NoteBubble script
-        noteBubble.Initialize(this, 0.3f); // Link NoteEvent to NoteBubble and set initial size
+        noteBubble.Initialize(this, 0.5f); // Link NoteEvent to NoteBubble and set initial size
 
         noteBubble.setParticleEffectColor(color); // set the particle effect color the same as the note
     }
