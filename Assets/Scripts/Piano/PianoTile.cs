@@ -44,7 +44,7 @@ public class PianoTile : MonoBehaviour
     }
 
     private float IntensityToVolume(int intensity) {
-        return Mathf.Clamp(intensity / 10f, 0f, 1f);
+        return 1; //Mathf.Clamp(intensity / 10f, 0f, 1f);
         // (float)(2.0 / (1.0 + Math.Exp(-2 * intensity)) - 1.0); // tanh
     }
 
@@ -66,8 +66,9 @@ public class PianoTile : MonoBehaviour
         if (keyHaptic != null){
             Debug.Log("Haptics Playing!");
             hapticSource = new HapticClipPlayer(keyHaptic);
-            hapticSource.Play(Controller.Left);
-            hapticSource.Play(Controller.Right);
+            Debug.Log("HERE ");
+            //hapticSource.Play(Controller.Left);
+            //hapticSource.Play(Controller.Right);
         }
         else
         {
