@@ -65,7 +65,9 @@ public class PianoTile : MonoBehaviour
 
         if (keyHaptic != null){
             Debug.Log("Haptics Playing!");
+
             hapticSource = new HapticClipPlayer(keyHaptic);
+            hapticSource.amplitude = IntensityToVolume(intensity); // optional
             Debug.Log("HERE ");
             //hapticSource.Play(Controller.Left);
             //hapticSource.Play(Controller.Right);
