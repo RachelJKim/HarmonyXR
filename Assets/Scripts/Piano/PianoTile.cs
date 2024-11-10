@@ -102,7 +102,7 @@ public class PianoTile : MonoBehaviour
     {
         player.Stop();
         Debug.Log("Tile Released!");
-
+        audioSource.Stop();
         // Notify the sequence to record the note release
         sequence?.RecordNoteRelease(keyName);
     }

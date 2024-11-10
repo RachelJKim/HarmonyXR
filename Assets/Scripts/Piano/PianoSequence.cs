@@ -131,7 +131,7 @@ public class PianoSequence : MonoBehaviour
 
         foreach (var note in notes)
         {
-            yield return new WaitForSeconds(note.pressTime - (Time.time - startTime));
+            yield return new WaitForSeconds(note.pressTime - (Time.time - playbackStartTime));
 
             // Trigger the particle effect and play sound directly from the NoteBubble
             note.StartParticleEffect();

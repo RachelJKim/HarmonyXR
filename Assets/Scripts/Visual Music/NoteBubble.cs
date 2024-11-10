@@ -22,7 +22,7 @@ public class NoteBubble : MonoBehaviour
         float intensity = currentSize / initialSize;
 
         // Update the NoteEvent's intensity if it has changed
-        if (!Mathf.Approximately(noteEvent.intensity, intensity))
+        if (!Mathf.Approximately(currentSize, initialSize))
         {
             noteEvent.UpdateIntensity(intensity);
         }
