@@ -1,6 +1,7 @@
 using Oculus.Interaction;
 using UnityEngine;
 using static Oculus.Interaction.InteractableColorVisual;
+using Oculus.Haptics;
 
 [RequireComponent(typeof(AudioSource))]
 public class PianoTile : MonoBehaviour
@@ -10,6 +11,7 @@ public class PianoTile : MonoBehaviour
     public PianoSequence sequence; // Reference to the Sequence script
     public Color color = Color.black;
     public InteractableColorVisual colorVisual;
+    private HapticClipPlayer player;
 
     private AudioSource audioSource;
 
@@ -31,6 +33,7 @@ public class PianoTile : MonoBehaviour
     private void OnValidate()
     {
         InitializeAudioSource();
+        InitializePlayer();
     }
 
     private void InitializeAudioSource()
@@ -45,6 +48,13 @@ public class PianoTile : MonoBehaviour
         {
             audioSource.clip = keySound;
         }
+    }
+
+    private void InitializePlayer()
+    {
+        player = new HapticClipPlayer();
+        player.isLooping = true;
+        player.frequencyShift = 
     }
 
     public void PressTile()
