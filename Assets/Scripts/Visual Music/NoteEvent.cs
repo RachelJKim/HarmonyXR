@@ -10,12 +10,12 @@ public class NoteEvent
     public NoteBubble noteBubble; // Reference to the corresponding NoteBubble script
     public Color color;
 
-    public NoteEvent(string keyName, float pressTime, Color color, float spacingMultiplier, GameObject noteBubblePrefab, Transform parent, float lineY, float lineZ)
+    public NoteEvent(string keyName, float pressTime, Color color, float spacingMultiplier, GameObject noteBubblePrefab, Transform parent, float lineY, float lineZ, AudioSource audioSource, float intensity)
     {
         this.keyName = keyName;
         this.pressTime = pressTime;
         this.releaseTime = -1f;
-        this.intensity = 0.5f; // Default intensity is 1 (based on initial size)
+        this.intensity = intensity; 
         this.color = color;
 
         // Calculate position based on pressTime and spacingMultiplier
@@ -35,10 +35,15 @@ public class NoteEvent
         renderer.material.color = color;
 
         noteBubble = noteBubbleObject.GetComponent<NoteBubble>(); // Add NoteBubble script
-        noteBubble.Initialize(this, 0.5f); // Link NoteEvent to NoteBubble and set initial size
+        //noteBubble.Initialize(this, 0.5f); // Link NoteEvent to NoteBubble and set initial size
+
+
+        noteBubble.Initialize(this, 0.1f, audioSource);
 
         noteBubble.setParticleEffectColor(color); // set the particle effect color the same as the note
     }
+
+
 
     public void SetReleaseTime(float time)
     {

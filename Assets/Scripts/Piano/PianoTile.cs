@@ -13,7 +13,7 @@ public class PianoTile : MonoBehaviour
     public Color color = Color.black;
     public InteractableColorVisual colorVisual;
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     public HapticClip templateHaptic;
     private HapticClipPlayer player;
@@ -72,31 +72,28 @@ public class PianoTile : MonoBehaviour
         return player;
     }
 
-    public void PressTile(float intensity=0.5f)
+    public void PressTile(float intensity = 0.5f)
     {
         Debug.Log("Tile Pressed!");
         Debug.Log("Key: " + keyName);
 
         if (keySound != null && audioSource != null)
         {
-            //audioSource.volume = IntensityToVolume(intensity);
-
             audioSource.Play();
 
+            // Create the NoteBubble for this note and pass in the AudioSource
+            NoteEvent noteEvent = sequence.RecordNotePress(keyName, color, this, intensity);
+
+            // Optional: Initialize haptic feedback
             HapticClipPlayer player = InitializePlayer();
-            Debug.Log("WOW " + player.amplitude + " / " + player.clipDuration);
-            Debug.Log("player initialized");
-            //player.amplitude = IntensityToVolume(intensity);
             player.Play(Controller.Both);
         }
         else
         {
             Debug.LogWarning("No audio clip assigned to the tile: " + keyName);
         }
-
-        // Notify the sequence to record the note press
-        sequence?.RecordNotePress(keyName, color);
     }
+
 
     public void ReleaseTile()
     {

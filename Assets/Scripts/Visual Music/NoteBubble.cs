@@ -7,12 +7,17 @@ public class NoteBubble : MonoBehaviour
     private float initialSize;     // Initial size to calculate intensity
     private ParticleSystem particleSystem;
 
-    public void Initialize(NoteEvent noteEvent, float initialSize)
+    public void Initialize(NoteEvent noteEvent, float initialSize, AudioSource sourceAudioSource)
     {
         this.noteEvent = noteEvent;
         this.initialSize = initialSize;
         this.gameObject.transform.localScale = new Vector3(initialSize, initialSize, initialSize);
         particleSystem = GetComponentInChildren<ParticleSystem>();
+
+        AudioSource bubbleAudioSource = gameObject.GetComponent<AudioSource>();
+        bubbleAudioSource.clip = sourceAudioSource.clip;
+        bubbleAudioSource.volume = sourceAudioSource.volume;
+        bubbleAudioSource.pitch = sourceAudioSource.pitch;
     }
 
     private void Update()

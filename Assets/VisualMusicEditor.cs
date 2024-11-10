@@ -11,7 +11,8 @@ public class VisualMusicEditor : Editor
     private void OnEnable()
     {
         VisualMusic vmusic = (VisualMusic)target;
-        sequence = vmusic.GetComponent<PianoSequence>();
+        try { sequence = vmusic.GetComponent<PianoSequence>(); }
+        catch { sequence = vmusic.transform.parent.GetComponentInChildren<PianoSequence>(); }
     }
 
     public override void OnInspectorGUI()

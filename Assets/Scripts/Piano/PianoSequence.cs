@@ -33,26 +33,28 @@ public class PianoSequence : MonoBehaviour
         Debug.Log("Recording stopped. Total notes recorded: " + notes.Count);
     }
 
-    public void RecordNotePress(string keyName, Color color, bool isPlayback=false)
+    public NoteEvent RecordNotePress(string keyName, Color color, PianoTile sourceTile, float intensity = 0.5f)
     {
         if (isRecording)
         {
             float pressTime = Time.time - startTime;
 
-
-            //GameObject musicVisual = GameObject.FindAnyObjectByType<VisualMusic>().gameObject;
+            // Use VisualMusic container as the parent object for the note bubble
             GameObject targetVisual = this.container.gameObject;
 
-            // Create a new NoteEvent with the calculated position and reference to NoteBubble prefab
-            NoteEvent noteEvent = new NoteEvent(keyName, pressTime, color, spacingMultiplier, noteBubblePrefab, targetVisual.transform, lineY, lineZ);
+            // Create a new NoteEvent and pass in the AudioSource from PianoTile
+            NoteEvent noteEvent = new NoteEvent(keyName, pressTime, color, spacingMultiplier, noteBubblePrefab, targetVisual.transform, lineY, lineZ, sourceTile.audioSource, intensity);
             notes.Add(noteEvent);
 
             // Start particle effect
             noteEvent.StartParticleEffect();
 
             Debug.Log($"Note {keyName} pressed at {pressTime} seconds.");
+            return noteEvent;
         }
+        return null;
     }
+
 
     public void RecordNoteRelease(string keyName)
     {
@@ -96,7 +98,10 @@ public class PianoSequence : MonoBehaviour
                 noteBubblePrefab,
                 newContainer.transform,
                 lineY,// * scaleMultiplier,
-                lineZ// * scaleMultiplier
+                lineZ,// * scaleMultiplier
+                note.noteBubble.GetComponent<AudioSource>(),
+                note.intensity
+
             );
 
             copiedNote.StopParticleEffect();
