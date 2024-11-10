@@ -38,7 +38,7 @@ public class NoteEvent
         //noteBubble.Initialize(this, 0.5f); // Link NoteEvent to NoteBubble and set initial size
 
 
-        noteBubble.Initialize(this, 0.1f, audioSource);
+        noteBubble.Initialize(this, 0.2f, audioSource);
 
         noteBubble.setParticleEffectColor(color); // set the particle effect color the same as the note
     }
