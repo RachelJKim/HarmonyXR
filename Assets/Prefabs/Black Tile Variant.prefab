@@ -773,7 +773,7 @@ MonoBehaviour:
       - m_Target: {fileID: 3882802490269743720}
         m_TargetAssemblyTypeName: PianoTile, Assembly-CSharp
         m_MethodName: PressTile
-        m_Mode: 1
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -826,6 +826,7 @@ MonoBehaviour:
   sequence: {fileID: 0}
   color: {r: 1, g: 1, b: 1, a: 1}
   colorVisual: {fileID: 7325610582103667971}
+  templateHaptic: {fileID: 2460798210113038985, guid: da9b841556a99aa44945627379b3d8d9, type: 3}
 --- !u!82 &1409912022143668748
 AudioSource:
   m_ObjectHideFlags: 0

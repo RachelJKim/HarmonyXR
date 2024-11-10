@@ -15,7 +15,7 @@ public class PianoTile : MonoBehaviour
 
     private AudioSource audioSource;
 
-    private HapticClip templateHaptic;
+    public HapticClip templateHaptic;
     private HapticClipPlayer player;
     private Dictionary<char, float> noteToShift = new Dictionary<char, float>() {
         {'C', -.3f},
@@ -56,6 +56,7 @@ public class PianoTile : MonoBehaviour
         {
             audioSource = GetComponent<AudioSource>();
             audioSource.playOnAwake = false;
+            audioSource.mute = false;
         }
 
         if (audioSource.clip != keySound)
