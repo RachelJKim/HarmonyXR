@@ -142,6 +142,7 @@ public class PianoSequence : MonoBehaviour
             note.StartParticleEffect();
 
             AudioSource noteAudioSource = note.noteBubble.GetComponent<AudioSource>();
+            
             if (noteAudioSource != null)
             {
                 noteAudioSource.Play();

@@ -826,6 +826,7 @@ MonoBehaviour:
   sequence: {fileID: 0}
   color: {r: 1, g: 1, b: 1, a: 1}
   colorVisual: {fileID: 3579551054884325236}
+  audioSource: {fileID: 1922260056404076959}
   templateHaptic: {fileID: 2460798210113038985, guid: da9b841556a99aa44945627379b3d8d9, type: 3}
 --- !u!82 &1922260056404076959
 AudioSource:
@@ -839,7 +840,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0

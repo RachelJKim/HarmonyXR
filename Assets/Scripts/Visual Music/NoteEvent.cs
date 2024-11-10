@@ -55,6 +55,7 @@ public class NoteEvent
     public void UpdateIntensity(float newIntensity)
     {
         intensity = newIntensity;
+        noteBubble.GetComponent<AudioSource>().volume = intensity;
         Debug.Log($"Updated intensity of {keyName} to {intensity}");
     }
 
