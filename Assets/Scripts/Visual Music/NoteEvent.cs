@@ -35,7 +35,7 @@ public class NoteEvent
         renderer.material.color = color;
 
         noteBubble = noteBubbleObject.GetComponent<NoteBubble>(); // Add NoteBubble script
-        noteBubble.Initialize(this, 0.3f); // Link NoteEvent to NoteBubble and set initial size
+        noteBubble.Initialize(this, 0.5f); // Link NoteEvent to NoteBubble and set initial size
 
         noteBubble.setParticleEffectColor(color); // set the particle effect color the same as the note
     }

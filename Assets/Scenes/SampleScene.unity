@@ -8460,6 +8460,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVRControllers
       objectReference: {fileID: 0}
+    - target: {fileID: 2698047492333244337, guid: fbfc588a949bb1a42b20e5bddc4cf8cf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4463783186525425583, guid: fbfc588a949bb1a42b20e5bddc4cf8cf, type: 3}
       propertyPath: _interactors.Array.size
       value: 3
@@ -20413,6 +20417,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 846891275142754950, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 846891275142754950, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: _whenUnselect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -20423,6 +20431,10 @@ PrefabInstance:
     - target: {fileID: 846891275142754950, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: _whenUnselect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 846891275142754950, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1922260056404076959, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: m_audioClip
@@ -20484,6 +20496,10 @@ PrefabInstance:
       propertyPath: keySound
       value: 
       objectReference: {fileID: 8300000, guid: 256d8f52f2c6f7d4fa6ac797ab9c5e18, type: 3}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: templateHaptic
+      value: 
+      objectReference: {fileID: 2460798210113038985, guid: da9b841556a99aa44945627379b3d8d9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20827,6 +20843,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1045219165634801313}
     m_Modifications:
+    - target: {fileID: 846891275142754950, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 846891275142754950, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1922260056404076959, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -20912,6 +20936,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1045219165634801313}
     m_Modifications:
+    - target: {fileID: 706210295151040525, guid: 61022c10a086a3744af4941be9d4ea95, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 706210295151040525, guid: 61022c10a086a3744af4941be9d4ea95, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1409912022143668748, guid: 61022c10a086a3744af4941be9d4ea95, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -21001,6 +21033,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 846891275142754950, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 846891275142754950, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -21019,6 +21055,10 @@ PrefabInstance:
     - target: {fileID: 846891275142754950, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 846891275142754950, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 846891275142754950, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -21453,6 +21493,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 706210295151040525, guid: 61022c10a086a3744af4941be9d4ea95, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 706210295151040525, guid: 61022c10a086a3744af4941be9d4ea95, type: 3}
       propertyPath: _whenUnselect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -21471,6 +21515,10 @@ PrefabInstance:
     - target: {fileID: 706210295151040525, guid: 61022c10a086a3744af4941be9d4ea95, type: 3}
       propertyPath: _whenUnselect.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PianoTile, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 706210295151040525, guid: 61022c10a086a3744af4941be9d4ea95, type: 3}
+      propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 706210295151040525, guid: 61022c10a086a3744af4941be9d4ea95, type: 3}
       propertyPath: _whenUnselect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -21500,6 +21548,10 @@ PrefabInstance:
       propertyPath: keySound
       value: 
       objectReference: {fileID: 8300000, guid: ab6de5dfec3a4414a95c95013ac1d750, type: 3}
+    - target: {fileID: 3882802490269743720, guid: 61022c10a086a3744af4941be9d4ea95, type: 3}
+      propertyPath: templateHaptic
+      value: 
+      objectReference: {fileID: 2460798210113038985, guid: da9b841556a99aa44945627379b3d8d9, type: 3}
     - target: {fileID: 4365050955364667656, guid: 61022c10a086a3744af4941be9d4ea95, type: 3}
       propertyPath: m_Name
       value: Black Tile
@@ -21559,16 +21611,16 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3260554887097613721}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d92caba06ef6e894cbeff2ff4fc2c60c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
-  Spatialize: 0
+  Spatialize: 1
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
@@ -21692,7 +21744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 846891275142754950, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 846891275142754950, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
       propertyPath: _whenSelect.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -21822,6 +21874,10 @@ PrefabInstance:
       propertyPath: keySound
       value: 
       objectReference: {fileID: 8300000, guid: 7e77e03a561d8b94b9e36a954ac93312, type: 3}
+    - target: {fileID: 8126273281544510969, guid: 1ff08184e2606bb4b9de5773ce05618a, type: 3}
+      propertyPath: templateHaptic
+      value: 
+      objectReference: {fileID: 2460798210113038985, guid: da9b841556a99aa44945627379b3d8d9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

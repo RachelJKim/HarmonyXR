@@ -13,7 +13,7 @@ public class PianoSequence : MonoBehaviour
 
     public GameObject noteBubblePrefab;
     public GameObject visualMusicPrefab;
-    public float spacingMultiplier = 1.0f;
+    public float spacingMultiplier = 2.0f;
     public float lineY = 0f;
     public float lineZ = 0f;
 
@@ -99,6 +99,7 @@ public class PianoSequence : MonoBehaviour
                 lineZ// * scaleMultiplier
             );
 
+            copiedNote.StopParticleEffect();
             // Adjust copied NoteBubble scale based on the scaleMultiplier
             copiedNote.noteBubble.transform.localScale = note.noteBubble.transform.localScale;
 
@@ -118,31 +119,33 @@ public class PianoSequence : MonoBehaviour
     public void StartPlayback(PianoSequence targetSequence)
     {
         if (playbackCoroutine != null) StopCoroutine(playbackCoroutine);
+
+        Debug.Log("StartPlayback.");
         playbackCoroutine = StartCoroutine(PlaybackCoroutine(targetSequence));
     }
 
     private IEnumerator PlaybackCoroutine(PianoSequence targetSequence)
     {
+        Debug.Log("PlayBackCoroutine");
         float playbackStartTime = Time.time;
 
         foreach (var note in notes)
         {
-            // Wait until the correct time to play this note
             yield return new WaitForSeconds(note.pressTime - (Time.time - playbackStartTime));
 
-            PianoTile tile = FindTileByName(note.keyName);
-            if (tile != null)
+            // Trigger the particle effect and play sound directly from the NoteBubble
+            note.StartParticleEffect();
+
+            AudioSource noteAudioSource = note.noteBubble.GetComponent<AudioSource>();
+            if (noteAudioSource != null)
             {
-                // Simulate the press action and start particle effect
-                tile.PressTile(0.5f); // TODO
-                note.StartParticleEffect();
-
-                yield return new WaitForSeconds(note.releaseTime - note.pressTime); // Wait for the duration
-
-                // Simulate the release action and stop particle effect
-                tile.ReleaseTile();
-                note.StopParticleEffect();
+                noteAudioSource.Play();
             }
+
+            yield return new WaitForSeconds(note.releaseTime - note.pressTime);
+
+            // Stop the particle effect after the release time
+            note.StopParticleEffect();
         }
     }
 
