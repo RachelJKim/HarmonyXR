@@ -8,6 +8,7 @@ public class NoteEvent
     public float releaseTime;
     public float intensity; // Intensity based on bubble size
     public NoteBubble noteBubble; // Reference to the corresponding NoteBubble script
+    public Color color;
 
     public NoteEvent(string keyName, float pressTime, Color color, float spacingMultiplier, GameObject noteBubblePrefab, Transform parent, float lineY, float lineZ)
     {
@@ -15,6 +16,7 @@ public class NoteEvent
         this.pressTime = pressTime;
         this.releaseTime = -1f;
         this.intensity = 1f; // Default intensity is 1 (based on initial size)
+        this.color = color;
 
         // Calculate position based on pressTime and spacingMultiplier
         float xPosition = pressTime * spacingMultiplier;
@@ -22,15 +24,18 @@ public class NoteEvent
 
 
         // Instantiate the noteBubble prefab under the specified parent
-        GameObject noteBubbleObject = GameObject.Instantiate(noteBubblePrefab, position, Quaternion.identity, parent);
-        noteBubbleObject.GetComponent<NoteBubble>().Initialize(this, 0.1f);
+        //GameObject noteBubbleObject = GameObject.Instantiate(noteBubblePrefab, position, Quaternion.identity, parent);
+        GameObject noteBubbleObject = GameObject.Instantiate(noteBubblePrefab, parent);
+        noteBubbleObject.transform.localPosition = position;
+
+        //noteBubbleObject.GetComponent<NoteBubble>().Initialize(this, 0.01f);
 
         // Set color and initialize the NoteBubble script
         Renderer renderer = noteBubbleObject.GetComponent<Renderer>();
         renderer.material.color = color;
 
-        noteBubble = noteBubbleObject.AddComponent<NoteBubble>(); // Add NoteBubble script
-        noteBubble.Initialize(this, 0.1f); // Link NoteEvent to NoteBubble and set initial size
+        noteBubble = noteBubbleObject.GetComponent<NoteBubble>(); // Add NoteBubble script
+        noteBubble.Initialize(this, 0.3f); // Link NoteEvent to NoteBubble and set initial size
 
         noteBubble.setParticleEffectColor(color); // set the particle effect color the same as the note
     }

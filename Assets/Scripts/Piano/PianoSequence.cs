@@ -8,11 +8,16 @@ public class PianoSequence : MonoBehaviour
     private bool isRecording = false;
     private float startTime;
     private Coroutine playbackCoroutine;
+    private bool isPlaying = false;
+    public Transform referencePoint;
 
     public GameObject noteBubblePrefab;
-    public float spacingMultiplier = 0.5f;
+    public GameObject visualMusicPrefab;
+    public float spacingMultiplier = 1.0f;
     public float lineY = 0f;
     public float lineZ = 0f;
+
+    public VisualMusic container;
 
     public void StartRecording()
     {
@@ -28,14 +33,18 @@ public class PianoSequence : MonoBehaviour
         Debug.Log("Recording stopped. Total notes recorded: " + notes.Count);
     }
 
-    public void RecordNotePress(string keyName, Color color)
+    public void RecordNotePress(string keyName, Color color, bool isPlayback=false)
     {
         if (isRecording)
         {
             float pressTime = Time.time - startTime;
 
+
+            //GameObject musicVisual = GameObject.FindAnyObjectByType<VisualMusic>().gameObject;
+            GameObject targetVisual = this.container.gameObject;
+
             // Create a new NoteEvent with the calculated position and reference to NoteBubble prefab
-            NoteEvent noteEvent = new NoteEvent(keyName, pressTime, color, spacingMultiplier, noteBubblePrefab, this.transform, lineY, lineZ);
+            NoteEvent noteEvent = new NoteEvent(keyName, pressTime, color, spacingMultiplier, noteBubblePrefab, targetVisual.transform, lineY, lineZ);
             notes.Add(noteEvent);
 
             // Start particle effect
@@ -63,13 +72,56 @@ public class PianoSequence : MonoBehaviour
         }
     }
 
-    public void StartPlayback()
+    public void CopySequenceToWorld(float scaleMultiplier)
     {
-        if (playbackCoroutine != null) StopCoroutine(playbackCoroutine);
-        playbackCoroutine = StartCoroutine(PlaybackCoroutine());
+        // Calculate the target world position with an offset from the current PianoSequence position
+        //Vector3 targetWorldPosition = transform.position + worldPositionOffset;
+
+        // Instantiate a new VisualMusic container at the reference position and rotation of the reference point   
+
+        GameObject newContainer = Instantiate(visualMusicPrefab, referencePoint.position, referencePoint.rotation);
+        PianoSequence targetSequence = newContainer.GetComponent<PianoSequence>();
+
+        // Clear the target sequence before copying
+        targetSequence.notes.Clear();
+
+        foreach (var note in notes)
+        {
+            // Create a new NoteEvent for the target sequence
+            NoteEvent copiedNote = new NoteEvent(
+                note.keyName,
+                note.pressTime,
+                note.color,
+                spacingMultiplier,// * scaleMultiplier,
+                noteBubblePrefab,
+                newContainer.transform,
+                lineY,// * scaleMultiplier,
+                lineZ// * scaleMultiplier
+            );
+
+            // Adjust copied NoteBubble scale based on the scaleMultiplier
+            copiedNote.noteBubble.transform.localScale = note.noteBubble.transform.localScale;
+
+            // Position each note relative to the new container’s local space
+            copiedNote.noteBubble.transform.localPosition = note.noteBubble.transform.localPosition;
+
+            // Add the copied note to the target sequence
+            targetSequence.notes.Add(copiedNote);
+            //now destroy the note bubble
+            Destroy(note.noteBubble.gameObject);
+        }
+        
+        newContainer.transform.localScale = new Vector3(scaleMultiplier, scaleMultiplier, scaleMultiplier);
     }
 
-    private IEnumerator PlaybackCoroutine()
+
+    public void StartPlayback(PianoSequence targetSequence)
+    {
+        if (playbackCoroutine != null) StopCoroutine(playbackCoroutine);
+        playbackCoroutine = StartCoroutine(PlaybackCoroutine(targetSequence));
+    }
+
+    private IEnumerator PlaybackCoroutine(PianoSequence targetSequence)
     {
         float playbackStartTime = Time.time;
 
@@ -93,6 +145,8 @@ public class PianoSequence : MonoBehaviour
             }
         }
     }
+
+
 
     private PianoTile FindTileByName(string keyName)
     {

@@ -79,6 +79,7 @@ public class PianoTile : MonoBehaviour
         if (keySound != null && audioSource != null)
         {
             audioSource.volume = IntensityToVolume(intensity);
+
             audioSource.Play();
 
             InitializePlayer();
@@ -102,4 +103,5 @@ public class PianoTile : MonoBehaviour
         // Notify the sequence to record the note release
         sequence?.RecordNoteRelease(keyName);
     }
+
 }
