@@ -15,7 +15,7 @@ public class NoteEvent
         this.keyName = keyName;
         this.pressTime = pressTime;
         this.releaseTime = -1f;
-        this.intensity = 1f; // Default intensity is 1 (based on initial size)
+        this.intensity = 0.5f; // Default intensity is 1 (based on initial size)
         this.color = color;
 
         // Calculate position based on pressTime and spacingMultiplier
