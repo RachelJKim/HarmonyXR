@@ -9,13 +9,13 @@ public class PianoTile : MonoBehaviour
 {
     public string keyName;
     public AudioClip keySound;
+    public HapticClip templateHaptic;
     public PianoSequence sequence; // Reference to the Sequence script
     public Color color = Color.black;
     public InteractableColorVisual colorVisual;
 
     private AudioSource audioSource;
 
-    public HapticClip templateHaptic;
     private HapticClipPlayer player;
     private Dictionary<char, float> noteToShift = new Dictionary<char, float>() {
         {'C', -.3f},
